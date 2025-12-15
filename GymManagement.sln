@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11310.294 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gym.Domain", "Gym.Domain\Gym.Domain.csproj", "{832CEDD6-3C1B-4C00-8D5B-B233CAA21DFD}"
 EndProject
@@ -10,6 +10,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gym.Infrastructure", "Gym.Infrastructure\Gym.Infrastructure.csproj", "{00BAC64F-1E36-45FA-9648-FDB96ED03826}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gym.API", "Gym.API\Gym.API.csproj", "{6306B488-2D08-401E-BEC9-0417441178E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D29C0725-A2B1-45ED-AD2F-CD2497C98E00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BRD", "BRD", "{F4A1C3B9-DDAB-4FDE-8D9C-9730C0941A40}"
+	ProjectSection(SolutionItems) = preProject
+		BusinessRequirementsDocument.txt = BusinessRequirementsDocument.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{71F24196-3A0C-4FE7-956F-918D98D9C054}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,5 +81,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F4A1C3B9-DDAB-4FDE-8D9C-9730C0941A40} = {D29C0725-A2B1-45ED-AD2F-CD2497C98E00}
+		{71F24196-3A0C-4FE7-956F-918D98D9C054} = {D29C0725-A2B1-45ED-AD2F-CD2497C98E00}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54E9907F-3D11-4538-A4D0-3B567703B093}
 	EndGlobalSection
 EndGlobal
