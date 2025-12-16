@@ -1,0 +1,65 @@
+﻿ 
+GYM MANAGEMENT
+Implementation Tasks
+ 
+ 
+Task 1 — Create Solution + Onion Projects + References
+Goal
+Create a clean Onion skeleton:
+●	Gym.Domain
+●	Gym.Application
+●	Gym.Infrastructure
+●	Gym.API
+and wire project references correctly.
+________________________________________
+1) Create the solution + projects (CLI)
+Run these commands in an empty folder:
+dotnet new sln -n GymManagement
+
+dotnet new classlib -n Gym.Domain
+dotnet new classlib -n Gym.Application
+dotnet new classlib -n Gym.Infrastructure
+dotnet new webapi  -n Gym.API
+
+dotnet sln GymManagement.sln add Gym.Domain/Gym.Domain.csproj
+dotnet sln GymManagement.sln add Gym.Application/Gym.Application.csproj
+dotnet sln GymManagement.sln add Gym.Infrastructure/Gym.Infrastructure.csproj
+dotnet sln GymManagement.sln add Gym.API/Gym.API.csproj
+________________________________________
+2) Add project references (Onion direction)
+dotnet add Gym.Application/Gym.Application.csproj reference Gym.Domain/Gym.Domain.csproj
+
+dotnet add Gym.Infrastructure/Gym.Infrastructure.csproj reference Gym.Domain/Gym.Domain.csproj
+dotnet add Gym.Infrastructure/Gym.Infrastructure.csproj reference Gym.Application/Gym.Application.csproj
+
+dotnet add Gym.API/Gym.API.csproj reference Gym.Application/Gym.Application.csproj
+dotnet add Gym.API/Gym.API.csproj reference Gym.Infrastructure/Gym.Infrastructure.csproj
+
+This enforces the dependency rule:
+API → Application → Domain
+Infrastructure → Application + Domain
+Domain depends on nothing
+________________________________________
+3) Clean up the API default WeatherForecast stuff
+Delete these files (or remove their content):
+●	WeatherForecast.cs
+●	Controllers/WeatherForecastController.cs
+________________________________________
+4) Add required NuGet packages (your stack)
+Infrastructure (EF Core + SQL Server)
+dotnet add Gym.Infrastructure package Microsoft.EntityFrameworkCore
+dotnet add Gym.Infrastructure package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add Gym.Infrastructure package Microsoft.EntityFrameworkCore.Design
+API (Swagger is already included usually, but ensure + JWT)
+dotnet add Gym.API package Microsoft.AspNetCore.Authentication.JwtBearer
+Application (AutoMapper + FluentValidation)
+dotnet add Gym.Application package AutoMapper --version 16.0.0
+dotnet add Gym.API package AutoMapper --version 16.0.0
+dotnet add Gym.API package AutoMapper.Extensions.Microsoft.DependencyInjection --version 16.0.0
+
+dotnet add Gym.Application package FluentValidation
+dotnet add Gym.API         package FluentValidation.AspNetCore
+________________________________________
+5) Build to confirm everything compiles
+dotnet build
+Task 1 completes when the build succeeds.
