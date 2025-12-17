@@ -1,0 +1,68 @@
+﻿ 
+GYM MANAGEMET
+Implementation Tasks
+ 
+ 
+Task 2 — Define Domain Layer (Entities + BaseEntity + Enums)
+Create the core business model of the Gym Management System:
+•	Base entity
+•	Enums
+•	Domain entities
+•	Navigation properties
+•	Zero infrastructure or EF Core concerns
+This layer must be:
+•	Pure C#
+•	Free of EF Core attributes
+•	Free of validation, logging, or Identity
+________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+📁 Folder Structure (Gym.Domain)
+ 
+
+
+
+
+1️⃣ BaseEntity
+ 
+
+
+
+
+
+
+2️⃣ MembershipPlan
+ 
+
+
+
+
+3️⃣ Trainer
+ 
+
+
+
+4️⃣ Member
+ 
+5️⃣ Session
+ 
+6️⃣ Booking
+ 
+
+
+7️⃣ Enums
+📄 Enums/MembershipStatus.cs
+ 
+
+📄 Enums/SessionStatus.cs
+ 
