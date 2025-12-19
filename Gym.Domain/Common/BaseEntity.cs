@@ -11,7 +11,7 @@ public abstract class BaseEntity
     public DateTime CreatedAt { get; protected set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; protected set; }
 
-    protected void SetUpdatedAt() => UpdatedAt = DateTime.UtcNow;
+    protected void SetUpdated() => UpdatedAt = DateTime.UtcNow;
 }
 
 // Why The Class Is Abstract ? 
