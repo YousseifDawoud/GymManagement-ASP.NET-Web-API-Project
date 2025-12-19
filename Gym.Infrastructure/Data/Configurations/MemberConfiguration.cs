@@ -21,5 +21,6 @@ public class MemberConfiguration : IEntityTypeConfiguration<Member>
         builder.Property(x => x.Status).IsRequired();
         builder.HasOne(x => x.MembershipPlan).WithMany().HasForeignKey(x => x.MembershipPlanId);
         builder.HasMany(x => x.Bookings).WithOne(x => x.Member).HasForeignKey(x => x.MemberId);
+        // Member Bokings Many Sessions 
     }
 }

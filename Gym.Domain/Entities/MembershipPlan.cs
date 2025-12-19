@@ -6,7 +6,11 @@ namespace Gym.Domain.Entities
     {
         public string Name { get; protected set; } = null!;
         public decimal Price { get; protected set; }
-        public int MaxSessionsPerMonth { get; set; }
+
+        // public int MaxSessionsPerMonth { get; set; } // ❌ breaks encapsulation
+        // Must NOT be publicly mutable
+        // Business rules should control this value
+        public int MaxSessionsPerMonth { get; private set; }
         private MembershipPlan() { } // For EF Core
 
 

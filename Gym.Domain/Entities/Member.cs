@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Gym.Domain.Entities;
 
+/// <summary>
+/// Represents a gym member.
+/// </summary>
 public class Member : BaseEntity
 {
     public string FullName { get; private set; } = null!;
@@ -14,14 +17,23 @@ public class Member : BaseEntity
 
     public DateOnly MembershipStartDate { get; private set; }
     public DateOnly MembershipEndDate { get; private set; }
-    public MembershipStatus Status { get; private set; }
-    public int MembershipPlanId { get; private set; }
-    public MembershipPlan MembershipPlan { get; private set; } = null!; // Navigation property
 
+    public MembershipStatus Status { get; private set; }
+
+
+    // Explicit FK + Navigation
+    public int MembershipPlanId { get; private set; }
+    public MembershipPlan MembershipPlan { get; private set; } = null!;
+
+
+    // Backing field to protect collection
     private readonly List<Booking> _bookings = new();
+
+    // Read-only exposure (DDD best practice)
     public IReadOnlyCollection<Booking> Bookings => _bookings;
 
-    private Member() { }
+
+    private Member() { } // For EF Core
 
     public Member(
         string fullName,
@@ -40,4 +52,9 @@ public class Member : BaseEntity
             SetUpdated();
         }
 }
+
+// Encapsulation =>  (private set)
+// Uses DateOnly (modern & clean)
+// Explicit FK + navigation (MembershipPlanId)
+// Business behavior => ExpireMembership method
 

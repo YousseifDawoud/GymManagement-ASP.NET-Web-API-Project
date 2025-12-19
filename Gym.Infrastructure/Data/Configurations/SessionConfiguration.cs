@@ -19,5 +19,6 @@ public class SessionConfiguration : IEntityTypeConfiguration<Session>
         builder.Property(x => x.Status).IsRequired();
         builder.HasOne(x => x.Trainer).WithMany(x => x.Sessions).HasForeignKey(x => x.TrainerId);
         builder.HasMany(x => x.Bookings).WithOne(x => x.Session).HasForeignKey(x => x.SessionId);
+        // Session Can Booked From Many Members 
     }
 }

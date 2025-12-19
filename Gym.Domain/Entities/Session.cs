@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Gym.Domain.Entities;
 
+/// <summary>
+/// Represents a gym session.
+/// </summary>
 public class Session : BaseEntity
 {
     public string Title { get; private set; } = null!;
@@ -14,13 +17,16 @@ public class Session : BaseEntity
     public int Capacity { get; private set; }
     public SessionStatus Status { get; private set; }
 
+    // Explicit FK + Navigation Property
     public int TrainerId { get; private set; }
     public Trainer Trainer { get; private set; } = null!;
+
 
     private readonly List<Booking> _bookings = new();
     public IReadOnlyCollection<Booking> Bookings => _bookings;
 
-    private Session() { }
+
+    private Session() { } // For EF Core
 
     public Session(
         string title,
